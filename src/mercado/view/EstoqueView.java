@@ -3,7 +3,6 @@ package mercado.view;
 import java.util.HashMap;
 import java.util.List;
 
-import mercado.controller.exceptions.BuscaProdutoException;
 import mercado.model.Historico;
 import mercado.model.Produto;
 
@@ -29,8 +28,7 @@ public class EstoqueView {
 				.println(item.getData() + " gi  ---   " + item.getNome_produto() + "   ---   " + item.getQuantidade()));
 	}
 
-	public static void mostrarHistoricoProduto(Produto produto, List<Historico> historico)
-			throws BuscaProdutoException {
+	public static void mostrarHistoricoProduto(Produto produto, List<Historico> historico) {
 		System.out.println("Data                        ---   Quantidade");
 		historico.forEach(hist -> {
 			if (hist.getNome_produto().equals(produto.getNome()))
