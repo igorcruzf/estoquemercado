@@ -2,7 +2,6 @@ package views;
 
 import java.util.HashMap;
 import java.util.List;
-
 import models.Historico;
 import models.Produto;
 
@@ -49,6 +48,12 @@ public class EstoqueView {
 		}
 	}
 	
-	public static void mostrar
+	public void mostrarMensagem (String mensagem) {
+		System.out.println(mensagem);
+	}
+	
+	public void mostrarException(String erro) {
+		System.out.println(erro);
+	}
 
 }
