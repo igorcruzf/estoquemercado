@@ -15,7 +15,7 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		int operacao = 1;
 		int quantidade = 0;
-		String texto;
+		String produto;
 
 		while (operacao != 0) {
 			EstoqueView.menuEstoque();
@@ -26,9 +26,9 @@ public class Main {
 				break;
 			case 1:
 				System.out.println("Digite o nome do produto a ser cadastrado: ");
-				texto = scan.next();
+				produto = scan.next();
 				try {
-					estoque.cadastrarProduto(texto, 0);
+					estoque.cadastrarProduto(produto, 0);
 				} catch (CadastrarProdutoException | NomeProdutoException | QuantidadeProdutoException e) {
 					System.out.println(e.getMessage());
 				}
@@ -36,12 +36,12 @@ public class Main {
 				break;
 			case 2:
 				System.out.println("Digite o nome do produto a ser alterado: ");
-				texto = scan.next();
-				String anterior = texto;
+				produto = scan.next();
+				String anterior = produto;
 				System.out.println("Qual será o novo nome do produto?");
-				texto = scan.next();
+				produto = scan.next();
 				try {
-					estoque.alterarProduto(anterior, texto);
+					estoque.alterarProduto(anterior, produto);
 				} catch (BuscaProdutoException | CadastrarProdutoException | NomeProdutoException
 						| QuantidadeProdutoException e) {
 					System.out.println(e.getMessage());
@@ -49,31 +49,31 @@ public class Main {
 				break;
 			case 3:
 				System.out.println("Digite o nome do produto a ser deletado: ");
-				texto = scan.next();
+				produto = scan.next();
 				try {
-					estoque.deletarProduto(texto);
+					estoque.deletarProduto(produto);
 				} catch (BuscaProdutoException e) {
 					System.out.println(e.getMessage());
 				}
 				break;
 			case 4:
 				System.out.println("Digite o nome do produto comprado:");
-				texto = scan.next();
+				produto = scan.next();
 				System.out.println("Qual a quantidade comprada?");
 				quantidade = scan.nextInt();
 				try {
-					estoque.transacao(texto, quantidade);
+					estoque.transacao(produto, quantidade);
 				} catch (BuscaProdutoException | QuantidadeProdutoException e) {
 					System.out.println(e.getMessage());
 				}
 				break;
 			case 5:
 				System.out.println("Digite o nome do produto vendido:");
-				texto = scan.next();
+				produto = scan.next();
 				System.out.println("Qual a quantidade vendida?");
 				quantidade = scan.nextInt();
 				try {
-					estoque.transacao(texto, -quantidade);
+					estoque.transacao(produto, -quantidade);
 				} catch (BuscaProdutoException | QuantidadeProdutoException e) {
 					System.out.println(e.getMessage());
 				}
@@ -83,9 +83,9 @@ public class Main {
 				int aux = scan.nextInt();
 				if (aux == 1) {
 					System.out.println("Digite o nome do produto a ser buscado no histórico");
-					texto = scan.next();
+					produto = scan.next();
 					try {
-						EstoqueView.mostrarHistoricoProduto(estoque.buscaProduto(texto), estoque.getHistorico());
+						EstoqueView.mostrarHistoricoProduto(estoque.buscaProduto(produto), estoque.getHistorico());
 					} catch (BuscaProdutoException e) {
 						System.out.println(e.getMessage());
 					}
