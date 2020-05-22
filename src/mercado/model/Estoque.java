@@ -47,7 +47,7 @@ public class Estoque {
 		this.cadastrarProduto(novo, quantidade);
 		this.produtos.remove(anterior);
 		this.historico.forEach(item -> {
-			if (item.getNome_produto().equals(anterior))
+			if (item.getNome_produto().equalsIgnoreCase(anterior))
 				item.setNome_produto(novo);
 		});
 	}
@@ -73,7 +73,6 @@ public class Estoque {
 	public void atualizaHistorico(Date data, int quantidade, String produto) {
 		this.historico.add(new Historico(data, quantidade, produto));
 	}
-
 
 	public Produto buscaProduto(String produto) throws BuscaProdutoException {
 		Produto produto_buscado = this.produtos.get(produto);
