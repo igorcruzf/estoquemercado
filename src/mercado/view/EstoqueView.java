@@ -9,13 +9,13 @@ import mercado.model.Produto;
 
 public class EstoqueView {
 	
-	public void mostrarHistoricoGeral(List<Historico> historico) {
+	public static void mostrarHistoricoGeral(List<Historico> historico) {
 		System.out.println("Data                           ---   Nome    ---   Quantidade");
 		historico.forEach(item -> System.out
 				.println(item.getData() + " gi  ---   " + item.getNome_produto() + "   ---   " + item.getQuantidade()));
 	}
 
-	public void mostrarHistoricoProduto(Produto produto, List<Historico> historico) throws BuscaProdutoException {
+	public static void mostrarHistoricoProduto(Produto produto, List<Historico> historico) throws BuscaProdutoException {
 		System.out.println("Data                        ---   Quantidade");
 		historico.forEach(hist -> {
 			if (hist.getNome_produto().equals(produto.getNome()))
@@ -26,7 +26,7 @@ public class EstoqueView {
 		System.out.println(produto.getNome() + "   ---    " + produto.getQuantidade());
 	}
 	
-	public void listarProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
+	public static void listarProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
 		if (com_quantidade == 2) {
 			System.out.println("Nome   ---   Quantidade");
 			produtos.forEach((nome, produto) -> System.out.println(nome + "   ---    " + produto.getQuantidade()));

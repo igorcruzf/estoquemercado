@@ -95,18 +95,18 @@ public class Main {
 					System.out.println("Digite o nome do produto a ser buscado no histórico");
 					texto = scan.next();
 					try {
-						estoque.mostrarHistoricoProduto(texto);
+						EstoqueView.mostrarHistoricoProduto(estoque.buscaProduto(texto), estoque.getHistorico());
 					} catch (BuscaProdutoException e) {
 						System.out.println(e.getMessage());
 					}
 				} else if (aux == 2) {
-					estoque.mostrarHistoricoGeral();
+					EstoqueView.mostrarHistoricoGeral(estoque.getHistorico());
 				} else
 					System.out.println("Número inválido");
 				break;
 			case 7:
 				System.out.println("Deseja listar os produtos sem a quantidade atual (1) ou com (2)?");
-				estoque.listarProdutos(scan.nextInt());
+				EstoqueView.listarProdutos(scan.nextInt(), estoque.getProdutos());
 				break;
 			default:
 				System.out.println("Entrada inválida");
