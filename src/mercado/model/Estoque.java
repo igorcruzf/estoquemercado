@@ -32,12 +32,10 @@ public class Estoque {
 
 	public void cadastrarProduto(String produto, int quantidade)
 			throws CadastrarProdutoException, NomeProdutoException, QuantidadeProdutoException {
-		try {
-			this.buscaProduto(produto);
-			throw new CadastrarProdutoException("O produto " + produto + " já está cadastrado no estoque");
-		} catch (BuscaProdutoException e) {
+			if(this.existeProduto(produto))
+				throw new CadastrarProdutoException("O produto " + produto + " já está cadastrado no estoque");
 			this.produtos.put(produto, new Produto(produto, quantidade));
-		}
+	
 	}
 
 	public void alterarProduto(String anterior, String novo)
@@ -80,6 +78,13 @@ public class Estoque {
 			throw new BuscaProdutoException("O produto " + produto + " não foi encontrado no estoque");
 		else
 			return produto_buscado;
+	}
+	
+	public boolean existeProduto(String produto) {
+		Produto produto_buscado = this.produtos.get(produto);
+		if(produto_buscado == null)
+			return false;
+		return true;
 	}
 
 }

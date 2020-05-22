@@ -96,7 +96,7 @@ public class Main {
 				break;
 			case 7:
 				System.out.println("Deseja listar os produtos sem a quantidade atual (1) ou com (2)?");
-				EstoqueView.listarProdutos(scan.nextInt(), estoque.getProdutos());
+				EstoqueView.mostrarListaProdutos(scan.nextInt(), estoque.getProdutos());
 				break;
 			default:
 				System.out.println("Entrada inválida");

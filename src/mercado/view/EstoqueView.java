@@ -39,7 +39,7 @@ public class EstoqueView {
 		System.out.println(produto.getNome() + "   ---    " + produto.getQuantidade());
 	}
 
-	public static void listarProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
+	public static void mostrarListaProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
 		if (com_quantidade == 2) {
 			System.out.println("Nome   ---   Quantidade");
 			produtos.forEach((nome, produto) -> System.out.println(nome + "   ---    " + produto.getQuantidade()));
