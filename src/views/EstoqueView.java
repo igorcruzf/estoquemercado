@@ -1,10 +1,9 @@
-package mercado.view;
+package views;
 
 import java.util.HashMap;
 import java.util.List;
-
-import mercado.model.Historico;
-import mercado.model.Produto;
+import models.Historico;
+import models.Produto;
 
 public class EstoqueView {
 
@@ -22,13 +21,13 @@ public class EstoqueView {
 		System.out.println("---------------------------");
 	}
 
-	public static void mostrarHistoricoGeral(List<Historico> historico) {
+	public void mostrarHistoricoGeral(List<Historico> historico) {
 		System.out.println("Data                           ---   Nome    ---   Quantidade");
 		historico.forEach(item -> System.out
 				.println(item.getData() + " gi  ---   " + item.getNome_produto() + "   ---   " + item.getQuantidade()));
 	}
 
-	public static void mostrarHistoricoProduto(Produto produto, List<Historico> historico) {
+	public void mostrarHistoricoProduto(Produto produto, List<Historico> historico) {
 		System.out.println("Data                        ---   Quantidade");
 		historico.forEach(hist -> {
 			if (hist.getNome_produto().equals(produto.getNome()))
@@ -39,7 +38,7 @@ public class EstoqueView {
 		System.out.println(produto.getNome() + "   ---    " + produto.getQuantidade());
 	}
 
-	public static void mostrarListaProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
+	public void mostrarListaProdutos(int com_quantidade, HashMap<String, Produto> produtos) {
 		if (com_quantidade == 2) {
 			System.out.println("Nome   ---   Quantidade");
 			produtos.forEach((nome, produto) -> System.out.println(nome + "   ---    " + produto.getQuantidade()));
@@ -47,6 +46,14 @@ public class EstoqueView {
 		} else {
 			produtos.forEach((nome, produto) -> System.out.println(nome));
 		}
+	}
+	
+	public void mostrarMensagem (String mensagem) {
+		System.out.println(mensagem);
+	}
+	
+	public void mostrarException(String erro) {
+		System.out.println(erro);
 	}
 
 }
