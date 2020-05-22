@@ -23,21 +23,8 @@ public class Estoque {
 	public void setHistorico(List<Historico> historico) {
 		this.historico = historico;
 	}
-	
-	public void addProdutos(Produto produto) {
-		produtos.put(produto.getNome(), produto);
-	}
-	
+
 	public Produto getProduto(String produto) {
 		return produtos.get(produto);
 	}
-	
-	public void removeProduto(String produto) {
-		produtos.remove(produto);
-	}
-
-	public void addHistorico(Historico historico) {
-		this.historico.add(historico);
-	}
-
 }

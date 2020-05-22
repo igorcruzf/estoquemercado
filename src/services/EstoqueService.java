@@ -1,6 +1,8 @@
 package services;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import exceptions.BuscaProdutoException;
 import exceptions.CadastrarProdutoException;
@@ -26,7 +28,9 @@ public class EstoqueService {
 			throws CadastrarProdutoException, NomeProdutoException, QuantidadeProdutoException {
 			if(existeProduto(produto))
 				throw new CadastrarProdutoException("O produto " + produto + " já está cadastrado no estoque");
-			estoque.addProdutos(new Produto(produto, quantidade));
+			HashMap<String, Produto> produtos = estoque.getProdutos();
+			produtos.put(produto, new Produto(produto, quantidade));
+			estoque.setProdutos(produtos);
 	}
 
 	public boolean existeProduto(String produto) {
@@ -41,16 +45,20 @@ public class EstoqueService {
 		buscaProduto(anterior);
 		int quantidade = estoque.getProduto(anterior).getQuantidade();
 		cadastrarProduto(novo, quantidade);
-		estoque.removeProduto(anterior);
+		HashMap<String, Produto> produtos = estoque.getProdutos();
+		produtos.remove(anterior);
+		estoque.setProdutos(produtos);
 		estoque.getHistorico().forEach(item -> {
 			if (item.getNome_produto().equalsIgnoreCase(anterior))
 				item.setNome_produto(novo);
 		});
 	}
 
-	public void deletarProduto(String nome) throws BuscaProdutoException {
-		buscaProduto(nome);
-		estoque.removeProduto(nome);
+	public void deletarProduto(String produto) throws BuscaProdutoException {
+		buscaProduto(produto);
+		HashMap<String, Produto> produtos = estoque.getProdutos();
+		produtos.remove(produto);
+		estoque.setProdutos(produtos);
 	}
 
 	public void transacao(String produto, int quantidade) throws BuscaProdutoException, QuantidadeProdutoException {
@@ -67,7 +75,9 @@ public class EstoqueService {
 	}
 
 	public void atualizaHistorico(Date data, int quantidade, String produto) {
-		estoque.addHistorico(new Historico(data, quantidade, produto));
+		List<Historico> historico = estoque.getHistorico();
+		historico.add(new Historico(data, quantidade, produto));
+		estoque.setHistorico(historico);
 	}
 
 	public Produto buscaProduto(String produto) throws BuscaProdutoException {
