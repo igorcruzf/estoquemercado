@@ -1,4 +1,4 @@
-package mercado.controller.exceptions;
+package exceptions;
 
 public class QuantidadeProdutoException extends Exception {
 	private static final long serialVersionUID = -86699653231106581L;
