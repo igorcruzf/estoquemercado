@@ -1,4 +1,4 @@
-package mercado.controller.exceptions;
+package exceptions;
 
 public class NomeProdutoException extends Exception {
 	private static final long serialVersionUID = -6674591332890628223L;

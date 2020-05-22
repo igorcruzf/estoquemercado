@@ -1,4 +1,4 @@
-package mercado.model;
+package models;
 
 import java.util.Date;
 

@@ -1,18 +1,22 @@
-package mercado.view;
+package controllers;
 
 import java.util.Scanner;
 
-import mercado.controller.exceptions.BuscaProdutoException;
-import mercado.controller.exceptions.CadastrarProdutoException;
-import mercado.controller.exceptions.NomeProdutoException;
-import mercado.controller.exceptions.QuantidadeProdutoException;
-import mercado.model.Estoque;
+import exceptions.BuscaProdutoException;
+import exceptions.CadastrarProdutoException;
+import exceptions.NomeProdutoException;
+import exceptions.QuantidadeProdutoException;
+import models.Estoque;
+import services.EstoqueService;
+import views.EstoqueView;
 
-public class Main {
-
+public class EstoqueController {
+	
 	public static void main(String[] args) {
 		Estoque estoque = new Estoque();
 		Scanner scan = new Scanner(System.in);
+		EstoqueService estoque_service = new EstoqueService();
+		EstoqueView estoque_view = new EstoqueView();
 		int operacao = 1;
 		int quantidade = 0;
 		String produto;
@@ -21,14 +25,16 @@ public class Main {
 			EstoqueView.menuEstoque();
 			operacao = scan.nextInt();
 			switch (operacao) {
+			//sair
 			case 0:
 				scan.close();
 				break;
+			//cadastrar
 			case 1:
 				System.out.println("Digite o nome do produto a ser cadastrado: ");
 				produto = scan.next();
 				try {
-					estoque.cadastrarProduto(produto, 0);
+					estoque_service.cadastrarProduto(produto, 0);
 				} catch (CadastrarProdutoException | NomeProdutoException | QuantidadeProdutoException e) {
 					System.out.println(e.getMessage());
 				}
@@ -105,4 +111,5 @@ public class Main {
 		}
 	}
 
+}
 }

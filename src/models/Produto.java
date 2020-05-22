@@ -1,7 +1,7 @@
-package mercado.model;
+package models;
 
-import mercado.controller.exceptions.NomeProdutoException;
-import mercado.controller.exceptions.QuantidadeProdutoException;
+import exceptions.NomeProdutoException;
+import exceptions.QuantidadeProdutoException;
 
 public class Produto {
 	private String nome;
