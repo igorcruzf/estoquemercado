@@ -18,17 +18,7 @@ public class Main {
 		String texto;
 
 		while (operacao != 0) {
-			System.out.println("---------------------------");
-			System.out.println("|    Escolha uma opção    |");
-			System.out.println("| 1 - Cadastrar produto   |");
-			System.out.println("| 2 - Alterar produto     |");
-			System.out.println("| 3 - Deletar produto     |");
-			System.out.println("| 4 - Fazer uma compra    |");
-			System.out.println("| 5 - Fazer uma venda     |");
-			System.out.println("| 6 - Verificar histórico |");
-			System.out.println("| 7 - Listar produtos     |");
-			System.out.println("| 0 - Sair                |");
-			System.out.println("---------------------------");
+			EstoqueView.menuEstoque();
 			operacao = scan.nextInt();
 			switch (operacao) {
 			case 0:
